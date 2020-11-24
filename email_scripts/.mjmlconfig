@@ -1,0 +1,5 @@
+{
+  "packages": [
+    "mjml-qr-code/lib/index.js"
+  ]
+}
