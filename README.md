@@ -1,4 +1,4 @@
-# CHIT-CHAT Server
+## chit-chat Server
 
 This is the server part of a chat web app.
 
