@@ -127,10 +127,19 @@ router.post('/signin', async (req, res) => {
   }
 });
 
-router.post('/signout', (req, res) => {
+router.post('/signout', authMiddleware, (req, res) => {
   log.verbose('LOGOUT');
-  res.clearCookie('jwt');
-  res.status(200).json({ message: 'ok' });
+  const expires = new Date(Date.now() - 1000);
+  const isProduction = process.env.NODE_ENV === 'production';
+  const cookieOptions = {
+    expires,
+    httpOnly: true,
+    sameSite: 'Lax',
+    domain: isProduction ? process.env.DOMAIN : '',
+    secure: isProduction ? true : false,
+  };
+  // res.clearCookie('jwt');
+  res.status(200).cookie('jwt', null, cookieOptions).json({ message: 'ok' });
 });
 
 router.post('/authenticate/facebook', async (req, res) => {
