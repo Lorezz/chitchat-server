@@ -138,7 +138,7 @@ router.post('/signout', authMiddleware, (req, res) => {
     domain: isProduction ? process.env.DOMAIN : '',
     secure: isProduction ? true : false,
   };
-  // res.clearCookie('jwt');
+  res.clearCookie('jwt');
   res.status(200).cookie('jwt', null, cookieOptions).json({ message: 'ok' });
 });
 

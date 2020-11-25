@@ -28,7 +28,7 @@
       <mj-column width="35%">
         <mj-image
           src="|fe_url|/imgs/logo.png"
-          alt="bottom border"
+          alt="logo"
           align="center"
           border="none"
           padding="0px"
@@ -42,7 +42,7 @@
       <mj-column width="35%">
         <mj-image
           src="|qrcode|"
-          alt="bottom border"
+          alt="qrcode"
           align="center"
           border="none"
           padding="0px"
