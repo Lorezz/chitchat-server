@@ -128,7 +128,9 @@ router.post('/signin', async (req, res) => {
 });
 
 router.post('/signout', (req, res) => {
-  res.clearCookie('jwt').json({ message: 'ok' });
+  log.verbose('LOGOUT');
+  res.clearCookie('jwt');
+  res.status(200).json({ message: 'ok' });
 });
 
 router.post('/authenticate/facebook', async (req, res) => {
