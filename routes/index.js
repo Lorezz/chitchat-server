@@ -7,6 +7,7 @@ const router = express.Router();
 const { sendMail } = require('../lib/email');
 const log = require('../lib/log');
 const upload = require('../lib/upload');
+const { getImage } = require('../lib/qrcode');
 
 const generatePin = () => {
   return Math.random().toString().substr(2, 6);
@@ -228,6 +229,11 @@ function emitProgress(message, procent) {
 }
 router.post('/upload', authMiddleware, (req, res) => {
   upload(req, res, emitProgress);
+});
+
+router.get('/qr', async (req, res) => {
+  const { text } = req.query;
+  return getImage(text, res);
 });
 
 // ROUTES USED DURING DEVELOPMENT
